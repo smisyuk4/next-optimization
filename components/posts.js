@@ -9,8 +9,12 @@ import Image from 'next/image';
 
 function Post({ post, action }) {
   function imageLoader(config) {
-    console.log(config);
-    return config.src;
+    const urlStart = config.src.split('upload/')[0];
+    const urlEnd = config.src.split('upload/')[1];
+    const transformation = `w_200,q_50`;
+
+    console.log(`${urlStart}upload/${transformation}/${urlEnd}`);
+    return `${urlStart}upload/${transformation}/${urlEnd}`;
   }
   return (
     <article className='post'>
